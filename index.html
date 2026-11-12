@@ -4,250 +4,285 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<style>body{margin:0}</style>
-<title>Cardápio do Açúcar em Dia — Vendas</title>
+<meta name="color-scheme" content="light">
+<title>Cardápio do Açúcar em Dia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-:root {
-  --bg: #F6F8F2;
-  --surface: #FFFFFF;
-  --surface-2: #E9EFE4;
-  --fg: #14261C;
-  --muted: #4F6558;
-  --line: #CFDACB;
-  --brand: #1F6B45;
-  --brand-fg: #FFFFFF;
-  --cta: #C84A2F;
-  --cta-fg: #FFFFFF;
-  --veg: #2E8450;
-  --veg-soft: #DCEFE2;
-  --pro: #C84A2F;
-  --pro-soft: #F9E1DA;
-  --carb: #D9A21B;
-  --carb-soft: #F7EAC4;
-  --note-bg: #FFF0BF;
-  --note-fg: #4D3A00;
-  --scrim: rgba(10, 20, 14, 0.55);
-  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
-  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0E1913; --surface: #15241B; --surface-2: #1C2F24; --fg: #E6EFE8; --muted: #A2B7AA; --line: #2B4333;
-    --brand: #5CC38A; --brand-fg: #0B1A12; --cta: #F08A6E; --cta-fg: #2A0F07;
-    --veg: #5CC38A; --veg-soft: #1B3A27; --pro: #F08A6E; --pro-soft: #3F2219; --carb: #EBBC47; --carb-soft: #3A2F10;
-    --note-bg: #3A2F10; --note-fg: #F3D98A; --scrim: rgba(0, 0, 0, 0.65);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0E1913; --surface: #15241B; --surface-2: #1C2F24; --fg: #E6EFE8; --muted: #A2B7AA; --line: #2B4333;
-  --brand: #5CC38A; --brand-fg: #0B1A12; --cta: #F08A6E; --cta-fg: #2A0F07;
-  --veg: #5CC38A; --veg-soft: #1B3A27; --pro: #F08A6E; --pro-soft: #3F2219; --carb: #EBBC47; --carb-soft: #3A2F10;
-  --note-bg: #3A2F10; --note-fg: #F3D98A; --scrim: rgba(0, 0, 0, 0.65);
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
-h1 { font-size: clamp(2.2rem, 9vw, 3.4rem); font-weight: 800; }
-h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 700; }
-h3 { font-size: 1.15rem; font-weight: 700; }
-p { margin: 0; }
-a { color: var(--brand); text-underline-offset: 3px; }
-:focus-visible { outline: 3px solid var(--carb); outline-offset: 2px; }
-.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 44px; }
-.band + .band { border-top: 1px solid var(--line); }
-.band--alt { background: var(--surface); }
-.stack > * + * { margin-top: 16px; }
-.kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
-.lead { font-size: 1.1rem; color: var(--muted); max-width: 54ch; }
-.cta { display: block; width: 100%; text-align: center; padding: 18px 20px; border-radius: 12px; background: var(--cta); color: var(--cta-fg); border: 0; font: 800 1.05rem var(--font-body); letter-spacing: 0.02em; cursor: pointer; text-decoration: none; }
-.cta--brand { background: var(--brand); color: var(--brand-fg); }
-.cta--ghost { background: transparent; color: var(--fg); border: 1.5px solid var(--line); font-weight: 700; padding: 14px 16px; }
-.assure { margin-top: 10px; font-size: 13.5px; color: var(--muted); text-align: center; }
-.block-cta { margin-top: 26px; }
-
-/* Topo */
-.topo { background: var(--surface); }
-.plate-ill { display: block; width: min(100%, 250px); margin: 8px auto 0; height: auto; }
-.plate-ill .a { fill: var(--veg); } .plate-ill .b { fill: var(--pro); } .plate-ill .c { fill: var(--carb); }
-.plate-ill .rim { fill: none; stroke: var(--surface); stroke-width: 3; }
-.plate-ill text { font-family: var(--font-display); font-weight: 800; font-size: 26px; fill: #fff; }
-.plate-ill .dk { fill: #2B2000; }
-
-/* Carrossel */
-.rail { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 8px; margin-top: 22px; scrollbar-width: none; overscroll-behavior-x: contain; }
-.rail::-webkit-scrollbar { display: none; }
-.card { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 10px; align-content: start; min-height: 190px; }
-.band--alt .card { background: var(--bg); }
-.card .tagline { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand); }
-.card .tagline.bonus { color: var(--cta); }
-.card p { color: var(--muted); font-size: 15px; }
-.count { margin-top: 6px; font-size: 13px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
-
-/* Pesquisa */
-.steps { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
-.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-.steps .n { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: var(--brand-fg); font-family: var(--font-display); font-weight: 800; }
-.steps b { display: block; }
-.steps span.src { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
-.small { font-size: 14px; color: var(--muted); margin-top: 18px; }
-.list { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-.list li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; }
-.list li::before { content: "✓"; font-weight: 800; color: var(--brand); }
-.list.no li::before { content: "×"; color: var(--cta); font-size: 1.2rem; line-height: 1.2; }
-
-/* Preços */
-.prices { display: grid; gap: 14px; margin-top: 24px; }
-.plan { background: var(--bg); border: 1.5px solid var(--line); border-radius: 16px; padding: 20px; display: grid; gap: 12px; }
-.plan--star { border-color: var(--brand); border-width: 2.5px; }
-.plan .badge { justify-self: start; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--brand); color: var(--brand-fg); padding: 4px 10px; border-radius: 999px; }
-.plan .price { font-family: var(--font-display); font-weight: 800; font-size: 2.3rem; line-height: 1; }
-.plan .price small { font-size: 0.9rem; font-weight: 600; color: var(--muted); font-family: var(--font-body); }
-.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
-.plan li::before { content: "✓ "; color: var(--brand); font-weight: 800; }
-.guarantee { margin-top: 20px; padding: 16px 18px; border-radius: 14px; background: var(--veg-soft); border: 1.5px solid var(--veg); font-weight: 600; }
-
-/* FAQ */
-.faq details { border-top: 1px solid var(--line); }
-.faq details:last-child { border-bottom: 1px solid var(--line); }
-.faq summary { list-style: none; cursor: pointer; padding: 16px 28px 16px 0; font-weight: 700; position: relative; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 1.5rem; color: var(--muted); }
-.faq details[open] summary::after { content: "–"; }
-.faq p { padding: 0 0 16px; color: var(--muted); max-width: 58ch; }
-.foot { font-size: 13.5px; color: var(--muted); display: grid; gap: 10px; }
-.sources { font-size: 14px; margin: 14px 0 0; padding-left: 18px; display: grid; gap: 6px; }
-
-/* Pop-ups */
-.modal { position: fixed; inset: 0; z-index: 30; display: none; align-items: flex-end; justify-content: center; background: var(--scrim); }
-.modal.open { display: flex; }
-.sheet { width: 100%; max-width: 520px; background: var(--surface); border-radius: 20px 20px 0 0; padding: 24px max(16px, env(safe-area-inset-right, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 12px; max-height: 92vh; overflow: auto; }
-.sheet .price-line { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; }
-.sheet .extras { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0; padding: 0; list-style: none; }
-.sheet .extras li { padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; background: var(--carb-soft); border: 1.5px solid var(--carb); }
-.sheet--bottom { border-radius: 20px 20px 0 0; }
-.modal--soft { background: transparent; pointer-events: none; }
-.modal--soft .sheet { pointer-events: auto; box-shadow: 0 -6px 30px rgba(0,0,0,0.25); border-top: 1px solid var(--line); }
-.xbtn { justify-self: end; background: transparent; border: 0; color: var(--muted); font: 600 14px var(--font-body); padding: 6px 4px; cursor: pointer; }
-@media (min-width: 640px) { .wrap { padding-block: 64px; } .modal { align-items: center; } .sheet { border-radius: 20px; } .card { flex-basis: 300px; } }
-@media (prefers-reduced-motion: no-preference) { .sheet { animation: up 0.22s ease-out; } @keyframes up { from { transform: translateY(24px); opacity: 0; } } }
+:root{--paper:#FBF3E4;--paper2:#F4E8D2;--card:#FFFDF8;--ink:#2A1F14;--mute:#6B5A47;--line:#E3D3B8;--leaf:#2F7A4B;--leaf2:#DDEBD3;--tom:#D8432B;--tom2:#FBD9CF;--sun:#F2B632;--sun2:#FCEBB8;--font-d:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--font-b:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;--font-h:"Caveat","Segoe Script",cursive}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-b);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--font-d);margin:0;line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(2.4rem,10.5vw,4rem);font-weight:800}
+h2{font-size:clamp(1.8rem,7vw,2.6rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+a{color:var(--leaf);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--tom);outline-offset:3px}
+.wrap{width:100%;max-width:700px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:52px}
+.hand{font-family:var(--font-h);font-weight:700;font-size:1.5rem;line-height:1;color:var(--tom)}
+.mark{background:linear-gradient(transparent 62%,var(--sun) 62% 92%,transparent 92%);padding:0 .1em}
+.lead{font-size:1.15rem;color:var(--mute);max-width:52ch}
+.stack>*+*{margin-top:18px}
+.cta{display:block;width:100%;text-align:center;padding:19px 20px;border-radius:16px;background:var(--tom);color:#fff;border:0;font:800 1.1rem var(--font-b);letter-spacing:.02em;cursor:pointer;box-shadow:0 5px 0 #A92F1B;transition:transform .08s,box-shadow .08s}
+.cta:active{transform:translateY(4px);box-shadow:0 1px 0 #A92F1B}
+.cta--leaf{background:var(--leaf);box-shadow:0 5px 0 #1D5232}
+.cta--leaf:active{box-shadow:0 1px 0 #1D5232}
+.cta--ghost{background:transparent;color:var(--ink);border:2px solid var(--line);box-shadow:none;font-weight:700;padding:14px 16px}
+.assure{margin-top:12px;font-size:14px;color:var(--mute);text-align:center}
+.block-cta{margin-top:28px}
+.sec-alt{background:var(--paper2)}
+.sec-card{background:var(--card)}
+.topbar{background:var(--ink);color:#FBF3E4;text-align:center;font-size:13.5px;padding:9px 12px;font-weight:600}
+.hero{position:relative;overflow:hidden}
+.hero .wrap{padding-top:34px}
+.plate-wrap{position:relative;margin:26px auto 0;width:min(100%,340px)}
+.plate-wrap svg{display:block;width:100%;height:auto}
+.sticker{position:absolute;font-family:var(--font-h);font-weight:700;font-size:1.3rem;line-height:1.05;padding:8px 12px;border-radius:12px;box-shadow:0 3px 0 rgba(0,0,0,.18);text-align:center}
+.st1{background:var(--sun);color:var(--ink);top:2%;left:-3%;transform:rotate(-7deg)}
+.st2{background:var(--leaf);color:#fff;top:46%;right:-3%;transform:rotate(6deg)}
+.st3{background:var(--tom);color:#fff;bottom:2%;left:2%;transform:rotate(-4deg)}
+.pains{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.pains li{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;font-weight:600}
+.pains svg{width:34px;height:34px}
+.note{font-family:var(--font-h);font-weight:700;font-size:1.55rem;color:var(--leaf);margin-top:22px;line-height:1.1}
+.how{counter-reset:h;list-style:none;margin:24px 0 0;padding:0;display:grid;gap:14px}
+.how li{counter-increment:h;position:relative;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px 18px 18px 70px}
+.how li::before{content:counter(h);position:absolute;left:16px;top:14px;width:40px;height:40px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font:800 1.3rem var(--font-d);transform:rotate(-6deg)}
+.how b{display:block;font-family:var(--font-d);font-size:1.15rem;margin-bottom:2px}
+.how span{color:var(--mute);font-size:16px}
+.day{margin-top:24px;display:grid;gap:12px}
+.meal{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px 18px;display:grid;gap:8px}
+.meal .t{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.meal .t b{font-family:var(--font-d);font-size:1.15rem}
+.meal .t i{font-style:normal;font-family:var(--font-h);font-size:1.35rem;color:var(--tom)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{padding:5px 12px;border-radius:999px;font-size:15px;font-weight:600;border:2px solid transparent}
+.v{background:var(--leaf2);border-color:#A9C99A}.p{background:var(--tom2);border-color:#EFA893}.c{background:var(--sun2);border-color:#E5C46B}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:13px}
+.legend span{padding:3px 10px;border-radius:999px;font-weight:700}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 10px;margin-top:24px;scrollbar-width:none;overscroll-behavior-x:contain}
+.rail::-webkit-scrollbar{display:none}
+.kit{flex:0 0 76%;max-width:290px;scroll-snap-align:start;background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;display:grid;gap:10px;align-content:start;min-height:230px}
+.kit svg{width:60px;height:60px}
+.kit .tag{font:700 12px var(--font-b);letter-spacing:.07em;text-transform:uppercase;color:var(--leaf)}
+.kit .tag.b{color:var(--tom)}
+.kit p{color:var(--mute);font-size:15.5px}
+.count{margin-top:6px;font-size:13.5px;color:var(--mute);text-align:center;font-variant-numeric:tabular-nums}
+.res{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px}
+.res li{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px}
+.res .n{width:44px;height:44px;border-radius:50%;background:var(--leaf);color:#fff;display:grid;place-items:center;font:800 1.2rem var(--font-d)}
+.res b{display:block;font-family:var(--font-d);font-size:1.1rem}
+.res .src{display:block;font-size:13.5px;color:var(--leaf);font-weight:700;margin-top:4px}
+.small{font-size:14px;color:var(--mute);margin-top:18px}
+.two{display:grid;gap:14px;margin-top:22px}
+.box{border-radius:20px;padding:20px;border:2px solid var(--line);background:var(--card)}
+.box.y{background:var(--leaf2);border-color:#A9C99A}
+.box.n{background:var(--tom2);border-color:#EFA893}
+.box ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.box li{display:grid;grid-template-columns:22px 1fr;gap:8px}
+.box.y li::before{content:"✓";font-weight:800;color:var(--leaf)}
+.box.n li::before{content:"×";font-weight:800;color:var(--tom);font-size:1.3rem;line-height:1.1}
+#relatos[hidden]{display:none}
+.prices{display:grid;gap:16px;margin-top:26px}
+.plan{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:12px;position:relative}
+.plan.star{border:3px solid var(--leaf);background:#fff}
+.badge{position:absolute;top:-14px;left:18px;background:var(--sun);font:700 1.2rem var(--font-h);padding:3px 14px;border-radius:10px;transform:rotate(-3deg);box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.price{font:800 2.8rem/1 var(--font-d)}
+.price small{font:600 .95rem var(--font-b);color:var(--mute)}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:16px}
+.plan li{display:grid;grid-template-columns:22px 1fr}
+.plan li::before{content:"✓";font-weight:800;color:var(--leaf)}
+.guar{margin-top:24px;display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center;padding:16px 18px;border-radius:18px;background:var(--leaf2);border:2px solid #A9C99A;font-weight:600}
+.guar svg{width:54px;height:54px}
+.faq details{border-top:2px solid var(--line)}
+.faq details:last-child{border-bottom:2px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 34px 18px 0;font:700 1.1rem var(--font-d);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:600 1.8rem var(--font-b);color:var(--tom)}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding:0 0 18px;color:var(--mute);max-width:56ch}
+.foot{font-size:13.5px;color:var(--mute);display:grid;gap:10px}
+.sources{font-size:14px;margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
+.modal{position:fixed;inset:0;z-index:30;display:none;align-items:flex-end;justify-content:center;background:rgba(42,31,20,.6)}
+.modal.open{display:flex}
+.sheet{width:100%;max-width:520px;background:var(--card);border-radius:26px 26px 0 0;padding:26px max(18px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));display:grid;gap:14px;max-height:92vh;overflow:auto}
+.sheet h2{font-size:1.9rem}
+.extras{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.extras li{padding:6px 12px;border-radius:999px;font-size:14.5px;font-weight:700;background:var(--sun2);border:2px solid #E5C46B}
+.modal--soft{background:transparent;pointer-events:none}
+.modal--soft .sheet{pointer-events:auto;box-shadow:0 -8px 30px rgba(0,0,0,.25);border-top:2px solid var(--line)}
+.xbtn{justify-self:end;background:transparent;border:0;color:var(--mute);font:600 14px var(--font-b);padding:6px 4px;cursor:pointer}
+@media(min-width:640px){.wrap{padding-block:72px}.modal{align-items:center}.sheet{border-radius:26px}.two{grid-template-columns:1fr 1fr}.prices{grid-template-columns:1fr 1fr}.kit{flex-basis:290px}}
+@media(prefers-reduced-motion:no-preference){.sheet{animation:up .22s ease-out}@keyframes up{from{transform:translateY(26px);opacity:0}}}
 </style>
-
 </head>
 <body>
+<div class="topbar">Feito com base em pesquisas e diretrizes de vários países</div>
 <main>
-<section class="topo">
+
+<section class="hero sec-card">
   <div class="wrap stack">
-    <p class="kicker">Cardápio do Açúcar em Dia</p>
-    <h1>Cardápio de 14 dias para cuidar do açúcar na alimentação</h1>
+    <p class="hand">Cardápio do Açúcar em Dia</p>
+    <h1>Cardápio de 14 dias para <span class="mark">cuidar do açúcar</span> na alimentação</h1>
     <p class="lead">Todas as refeições das próximas duas semanas planejadas, com lista de compras e custo por dia. Para quem quer comer com menos açúcar sem passar o dia pensando no que cozinhar.</p>
-    <svg class="plate-ill" viewBox="0 0 160 160" role="img" aria-label="Prato: metade vegetais, um quarto proteína, um quarto carboidrato">
-      <path class="a" d="M80 6 A74 74 0 0 0 80 154 Z"/>
-      <path class="b" d="M80 80 L80 6 A74 74 0 0 1 154 80 Z"/>
-      <path class="c" d="M80 80 L154 80 A74 74 0 0 1 80 154 Z"/>
-      <circle class="rim" cx="80" cy="80" r="74"/>
-      <text x="40" y="90" text-anchor="middle">½</text>
-      <text x="118" y="56" text-anchor="middle">¼</text>
-      <text class="dk" x="118" y="118" text-anchor="middle">¼</text>
-    </svg>
+    <div class="plate-wrap">
+      <svg viewBox="0 0 320 320" role="img" aria-label="Prato ilustrado: metade com vegetais, um quarto com ovo e frango, um quarto com arroz e feijão">
+        <circle cx="160" cy="166" r="150" fill="#E6D6B8"/>
+        <circle cx="160" cy="160" r="150" fill="#FFFDF8" stroke="#E3D3B8" stroke-width="4"/>
+        <circle cx="160" cy="160" r="122" fill="none" stroke="#EFE3CB" stroke-width="3"/>
+        <path d="M160 40A120 120 0 0 0 160 280Z" fill="#DDEBD3"/>
+        <path d="M160 160L160 40A120 120 0 0 1 280 160Z" fill="#FBD9CF"/>
+        <path d="M160 160L280 160A120 120 0 0 1 160 280Z" fill="#FCEBB8"/>
+        <path d="M160 40V280M40 160H280" stroke="#FFFDF8" stroke-width="6"/>
+        <g fill="#2F7A4B"><circle cx="92" cy="108" r="17"/><circle cx="112" cy="94" r="14"/><circle cx="74" cy="126" r="13"/><circle cx="104" cy="122" r="12"/></g>
+        <g fill="#1D5232"><rect x="86" y="120" width="8" height="22" rx="3"/><rect x="108" y="108" width="7" height="20" rx="3"/></g>
+        <g fill="#D8432B"><circle cx="86" cy="200" r="15"/><circle cx="116" cy="222" r="14"/></g>
+        <g fill="#FFFDF8" opacity=".55"><circle cx="82" cy="195" r="4"/><circle cx="112" cy="217" r="4"/></g>
+        <path d="M70 168q14-10 28 0t28 0" fill="none" stroke="#7DB35C" stroke-width="6" stroke-linecap="round"/>
+        <path d="M66 246q14-10 28 0t28 0" fill="none" stroke="#7DB35C" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="218" cy="98" rx="30" ry="25" fill="#fff" stroke="#F0DFC0" stroke-width="3"/>
+        <circle cx="218" cy="98" r="12" fill="#F2B632"/>
+        <rect x="196" y="124" width="46" height="18" rx="9" fill="#C98A52" transform="rotate(-10 219 133)"/>
+        <g fill="#fff" stroke="#E5D6B2"><ellipse cx="206" cy="212" rx="5" ry="2.5"/><ellipse cx="222" cy="206" rx="5" ry="2.5"/><ellipse cx="238" cy="214" rx="5" ry="2.5"/><ellipse cx="214" cy="226" rx="5" ry="2.5"/><ellipse cx="232" cy="230" rx="5" ry="2.5"/><ellipse cx="248" cy="224" rx="5" ry="2.5"/></g>
+        <g fill="#6B3B22"><ellipse cx="196" cy="240" rx="9" ry="6"/><ellipse cx="212" cy="248" rx="9" ry="6"/><ellipse cx="190" cy="254" rx="8" ry="5"/></g>
+      </svg>
+      <span class="sticker st1">14 dias<br>planejados</span>
+      <span class="sticker st2">lista de<br>compras</span>
+      <span class="sticker st3">custo<br>por dia</span>
+    </div>
     <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button>
     <p class="assure">Acesso imediato por e-mail · Garantia de 7 dias · Pagamento no Pix ou cartão</p></div>
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap stack">
-    <p class="kicker">O problema</p>
-    <h2>Todo dia a mesma pergunta: o que eu posso comer hoje?</h2>
-    <p>Quando é preciso cuidar do açúcar, planejar as refeições vira uma tarefa a mais. Você procura receita, compara rótulo, refaz a lista de compras e, no fim da semana, repete o que já conhece porque é mais seguro.</p>
-    <p><b>O cardápio resolve a parte prática:</b> o que cozinhar a cada dia, o que comprar e quanto vai custar.</p>
+<section>
+  <div class="wrap">
+    <p class="hand">Todo dia é a mesma coisa</p>
+    <h2 style="margin-top:6px">O que eu posso comer hoje?</h2>
+    <p class="lead" style="margin-top:14px">Quando é preciso cuidar do açúcar, planejar as refeições vira uma tarefa a mais. No fim da semana, você acaba repetindo o que já conhece porque é mais seguro.</p>
+    <ul class="pains">
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14" fill="#FCEBB8"/><path d="M11 10h12v14H11z" fill="#fff" stroke="#2A1F14" stroke-width="2"/><path d="M14 15h6M14 19h6" stroke="#2A1F14" stroke-width="2" stroke-linecap="round"/></svg>Procurar receita e comparar rótulo a cada refeição</li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14" fill="#FBD9CF"/><path d="M8 11h3l3 11h10l2-8H13" fill="none" stroke="#2A1F14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="26" r="1.6" fill="#2A1F14"/><circle cx="23" cy="26" r="1.6" fill="#2A1F14"/></svg>Refazer a lista de compras toda semana</li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14" fill="#DDEBD3"/><path d="M17 9v9l5 3" fill="none" stroke="#2A1F14" stroke-width="2" stroke-linecap="round"/></svg>Perder tempo decidindo o que cozinhar</li>
+    </ul>
+    <p class="note">O cardápio resolve a parte prática: o que cozinhar, o que comprar e quanto vai custar.</p>
     <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button></div>
   </div>
 </section>
 
-<section class="band band--alt">
+<section class="sec-alt">
   <div class="wrap">
-    <p class="kicker">O que vem no kit</p>
-    <h2>Tudo o que vem no kit</h2>
+    <p class="hand">Simples de seguir</p>
+    <h2 style="margin-top:6px">Como funciona no dia a dia</h2>
+    <ol class="how">
+      <li><b>Abra o cardápio do dia</b><span>Café, almoço, lanche e jantar já montados, no celular ou impresso.</span></li>
+      <li><b>Compre pela lista da semana</b><span>Tudo agrupado por seção do mercado, com o custo de cada dia.</span></li>
+      <li><b>Monte o prato e siga a ordem</b><span>Cada refeição vem pronta para montar o prato do jeito do método.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="hand">Espie como é</p>
+    <h2 style="margin-top:6px">Um dia no cardápio</h2>
+    <p class="lead" style="margin-top:12px">Assim cada refeição aparece, com o que entra em cada parte do prato.</p>
+    <div class="legend"><span class="v">vegetal</span><span class="p">proteína</span><span class="c">carboidrato</span></div>
+    <div class="day">
+      <div class="meal"><div class="t"><b>Café da manhã</b><i>7h</i></div><ul class="chips"><li class="p">ovos mexidos</li><li class="v">tomate e cebola</li><li class="c">pão integral</li><li class="c">mamão</li></ul></div>
+      <div class="meal"><div class="t"><b>Almoço</b><i>12h30</i></div><ul class="chips"><li class="v">salada de folhas</li><li class="v">brócolis refogado</li><li class="p">frango grelhado</li><li class="c">arroz integral com feijão</li></ul></div>
+      <div class="meal"><div class="t"><b>Lanche</b><i>16h</i></div><ul class="chips"><li class="p">iogurte natural sem açúcar</li><li class="c">aveia</li><li class="c">maçã</li></ul></div>
+      <div class="meal"><div class="t"><b>Jantar</b><i>19h30</i></div><ul class="chips"><li class="v">salada com cenoura</li><li class="p">omelete de abobrinha e tomate</li><li class="c">batata-doce</li></ul></div>
+    </div>
+    <p class="small">Exemplo ilustrativo. No material, cada refeição vem com porções e modo de preparo.</p>
+    <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button></div>
+  </div>
+</section>
+
+<section class="sec-alt">
+  <div class="wrap">
+    <p class="hand">O que você recebe</p>
+    <h2 style="margin-top:6px">Tudo o que vem no kit</h2>
     <div class="rail" id="rail" tabindex="0" aria-label="Itens do kit, arraste para o lado">
-      <article class="card"><span class="tagline">Principal</span><h3>Cardápio de 14 dias</h3><p>Café, almoço, lanche e jantar de cada dia, com porções e modo de preparo.</p></article>
-      <article class="card"><span class="tagline">Principal</span><h3>Lista de compras por semana</h3><p>Tudo o que comprar, agrupado por seção do mercado.</p></article>
-      <article class="card"><span class="tagline">Principal</span><h3>Custo por dia</h3><p>Quanto cada dia de cardápio custa, para você planejar o orçamento.</p></article>
-      <article class="card"><span class="tagline bonus">Bônus 1 · incluso no Completo</span><h3>Cardápio de 30 dias</h3><p>Mais duas semanas de refeições para variar o mês inteiro.</p></article>
-      <article class="card"><span class="tagline bonus">Bônus 2 · incluso no Completo</span><h3>Guia de substituições</h3><p>Trocas simples de ingredientes quando falta algo em casa.</p></article>
-      <article class="card"><span class="tagline bonus">Bônus 3 · incluso no Completo</span><h3>Versão para imprimir</h3><p>O kit em PDF organizado para deixar na geladeira.</p></article>
+      <article class="kit"><svg viewBox="0 0 60 60" aria-hidden="true"><rect x="8" y="6" width="38" height="48" rx="6" fill="#FCEBB8" stroke="#2A1F14" stroke-width="3"/><path d="M16 20h22M16 30h22M16 40h14" stroke="#2A1F14" stroke-width="3" stroke-linecap="round"/><circle cx="46" cy="44" r="10" fill="#D8432B"/><path d="M42 44h8M46 40v8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="tag">Principal</span><h3>Cardápio de 14 dias</h3><p>Café, almoço, lanche e jantar de cada dia, com porções e modo de preparo.</p></article>
+      <article class="kit"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M6 12h9l7 28h26l6-20H18" fill="#DDEBD3" stroke="#2A1F14" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="24" cy="50" r="4" fill="#2A1F14"/><circle cx="44" cy="50" r="4" fill="#2A1F14"/></svg><span class="tag">Principal</span><h3>Lista de compras por semana</h3><p>Tudo o que comprar, agrupado por seção do mercado.</p></article>
+      <article class="kit"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="#FBD9CF" stroke="#2A1F14" stroke-width="3"/><text x="30" y="39" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="26" fill="#2A1F14">R$</text></svg><span class="tag">Principal</span><h3>Custo por dia</h3><p>Quanto cada dia de cardápio custa, para você planejar o orçamento.</p></article>
+      <article class="kit"><svg viewBox="0 0 60 60" aria-hidden="true"><rect x="6" y="10" width="48" height="44" rx="8" fill="#FCEBB8" stroke="#2A1F14" stroke-width="3"/><path d="M6 22h48" stroke="#2A1F14" stroke-width="3"/><path d="M18 6v8M42 6v8" stroke="#2A1F14" stroke-width="3" stroke-linecap="round"/><text x="30" y="46" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="20" fill="#2A1F14">30</text></svg><span class="tag b">Bônus 1 · incluso no Completo</span><h3>Cardápio de 30 dias</h3><p>Mais duas semanas de refeições para variar o mês inteiro.</p></article>
+      <article class="kit"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M10 22h34l-6-8M50 38H16l6 8" fill="none" stroke="#2A1F14" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="30" r="5" fill="#2F7A4B"/></svg><span class="tag b">Bônus 2 · incluso no Completo</span><h3>Guia de substituições</h3><p>Trocas simples de ingredientes quando falta algo em casa.</p></article>
+      <article class="kit"><svg viewBox="0 0 60 60" aria-hidden="true"><rect x="14" y="6" width="32" height="18" rx="3" fill="#fff" stroke="#2A1F14" stroke-width="3"/><rect x="6" y="22" width="48" height="24" rx="6" fill="#DDEBD3" stroke="#2A1F14" stroke-width="3"/><rect x="14" y="38" width="32" height="16" rx="3" fill="#fff" stroke="#2A1F14" stroke-width="3"/></svg><span class="tag b">Bônus 3 · incluso no Completo</span><h3>Versão para imprimir</h3><p>O kit em PDF organizado para deixar na geladeira.</p></article>
     </div>
     <p class="count" id="railcount" aria-live="polite">1 de 6 · arraste para o lado →</p>
     <div class="block-cta"><button class="cta" data-buy="completo" type="button">QUERO TUDO POR R$ 29,90</button></div>
   </div>
 </section>
 
-<section class="band">
+<section>
   <div class="wrap">
-    <p class="kicker">Base de pesquisa</p>
-    <h2>Feito com base em pesquisas de vários países</h2>
+    <p class="hand">De onde vem</p>
+    <h2 style="margin-top:6px">Feito com base em pesquisas de vários países</h2>
     <p class="lead" style="margin-top:12px">O cardápio combina cinco ideias descritas em diretrizes e estudos publicados, com as fontes à vista.</p>
-    <ol class="steps">
+    <ul class="res">
       <li><span class="n">1</span><span><b>O método do prato</b>Metade do prato com vegetais sem amido, um quarto com proteína e um quarto com carboidratos.<span class="src">Associação Americana de Diabetes (EUA)</span></span></li>
       <li><span class="n">2</span><span><b>A ordem em que se come</b>Em estudos, comer vegetais e proteína antes do carboidrato reduziu o pico de glicose depois da refeição.<span class="src">Estudos do Japão e dos EUA</span></span></li>
       <li><span class="n">3</span><span><b>A troca de carboidratos</b>Diretrizes recomendam trocar carboidratos de índice glicêmico alto por outros de índice menor em refeições mistas.<span class="src">Diabetes Canadá e Reino Unido</span></span></li>
       <li><span class="n">4</span><span><b>Comida de verdade</b>Preferir alimentos in natura ou minimamente processados aos ultraprocessados.<span class="src">Guia Alimentar para a População Brasileira</span></span></li>
       <li><span class="n">5</span><span><b>Caminhada curta depois de comer</b>Revisões encontraram que caminhar de 2 a 5 minutos depois das refeições ajudou glicose e insulina.<span class="src">Revisões na revista Sports Medicine</span></span></li>
-    </ol>
+    </ul>
     <p class="small">Estas são referências de estudo, não promessa de resultado. Este material não tem vínculo com essas instituições, que não o endossam, e não substitui acompanhamento médico ou nutricional.</p>
     <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button></div>
   </div>
 </section>
 
-<section class="band band--alt">
+<!-- Relatos de pessoas reais entram aqui, só com autorização. Remova o atributo hidden quando houver. -->
+<section id="relatos" class="sec-card" hidden>
+  <div class="wrap"><p class="hand">Quem já usou</p><h2 style="margin-top:6px">Relatos de quem testou</h2><div id="relatos-lista"></div></div>
+</section>
+<!-- Bloco "Quem revisou" entra depois que o profissional confirmar nome e registro. -->
+
+<section class="sec-alt">
   <div class="wrap">
-    <h2>Para quem é</h2>
-    <ul class="list">
-      <li>Para quem quer organizar as refeições da semana e reduzir o açúcar do dia a dia.</li>
-      <li>Para quem cuida da alimentação de alguém da família.</li>
-      <li>Para quem está começando e não sabe o que cozinhar.</li>
-    </ul>
-    <h2 style="margin-top:32px">Para quem não é</h2>
-    <ul class="list no">
-      <li>Não é tratamento e não substitui acompanhamento médico ou nutricional.</li>
-      <li>Não é uma dieta pronta para quem usa insulina ou medicação: nesse caso, a orientação do seu médico ou nutricionista vem primeiro.</li>
-    </ul>
-    <!-- Bloco "Quem revisou" só entra depois que o revisor confirmar nome e registro. -->
-    <!-- Bloco "Depoimentos" só entra com clientes reais e autorização. -->
+    <div class="two">
+      <div class="box y"><h2 style="font-size:1.7rem">Para quem é</h2><ul>
+        <li>Para quem quer organizar as refeições da semana e reduzir o açúcar do dia a dia.</li>
+        <li>Para quem cuida da alimentação de alguém da família.</li>
+        <li>Para quem está começando e não sabe o que cozinhar.</li></ul></div>
+      <div class="box n"><h2 style="font-size:1.7rem">Para quem não é</h2><ul>
+        <li>Não é tratamento e não substitui acompanhamento médico ou nutricional.</li>
+        <li>Não é uma dieta pronta para quem usa insulina ou medicação: nesse caso, a orientação do seu médico ou nutricionista vem primeiro.</li></ul></div>
+    </div>
   </div>
 </section>
 
-<section class="band" id="oferta">
+<section id="oferta">
   <div class="wrap">
-    <p class="kicker">Escolha o seu</p>
-    <h2>Dois jeitos de começar</h2>
+    <p class="hand">Escolha o seu</p>
+    <h2 style="margin-top:6px">Dois jeitos de começar</h2>
     <div class="prices">
       <div class="plan">
         <h3>Básico</h3>
         <div class="price">R$ 19,90</div>
         <ul><li>Cardápio de 14 dias</li><li>Lista de compras por semana</li><li>Custo por dia</li></ul>
-        <button class="cta cta--brand" data-buy="basico" type="button">QUERO O CARDÁPIO</button>
+        <button class="cta cta--leaf" data-buy="basico" type="button">QUERO O CARDÁPIO</button>
       </div>
-      <div class="plan plan--star">
-        <span class="badge">Mais escolhido</span>
+      <div class="plan star">
+        <span class="badge">mais escolhido</span>
         <h3>Completo</h3>
         <div class="price">R$ 29,90</div>
         <ul><li>Tudo do Básico</li><li>Cardápio de 30 dias</li><li>Guia de substituições</li><li>Versão para imprimir</li></ul>
         <button class="cta" data-buy="completo" type="button">QUERO TUDO POR R$ 29,90</button>
       </div>
     </div>
-    <p class="guarantee">Risco zero: se não gostar, devolvemos 100% do seu dinheiro em até 7 dias. Sem perguntas.</p>
+    <div class="guar"><svg viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="24" fill="#fff" stroke="#2F7A4B" stroke-width="3"/><path d="M16 28l8 8 14-16" fill="none" stroke="#2F7A4B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Risco zero: se não gostar, devolvemos 100% do seu dinheiro em até 7 dias. Sem perguntas.</p></div>
     <p class="assure">Acesso imediato por e-mail · Pagamento no Pix ou cartão</p>
   </div>
 </section>
 
-<section class="band band--alt faq">
+<section class="sec-alt faq">
   <div class="wrap">
-    <h2 style="margin-bottom:20px">Perguntas frequentes</h2>
+    <h2 style="margin-bottom:18px">Perguntas frequentes</h2>
     <details><summary>Serve para quem tem diabetes?</summary><p>O cardápio foi pensado para reduzir o açúcar na alimentação. Se você tem diabetes ou usa medicação, siga a orientação do seu médico ou nutricionista. Este material não substitui o acompanhamento.</p></details>
     <details><summary>Preciso de ingredientes difíceis?</summary><p>Não. A lista de compras usa itens de mercado comum.</p></details>
     <details><summary>Como recebo?</summary><p>Depois do pagamento, o acesso chega por e-mail na hora. Dá para abrir no celular ou imprimir.</p></details>
@@ -256,7 +291,7 @@ a { color: var(--brand); text-underline-offset: 3px; }
   </div>
 </section>
 
-<footer class="band">
+<footer>
   <div class="wrap foot">
     <p>Este material tem caráter informativo e não substitui consulta, diagnóstico ou tratamento médico ou nutricional. Pessoas com doenças, gestantes e crianças devem procurar um profissional antes de mudar a alimentação.</p>
     <p><b>Fontes</b></p>
@@ -271,7 +306,6 @@ a { color: var(--brand); text-underline-offset: 3px; }
 </footer>
 </main>
 
-<!-- Pop-up de upgrade -->
 <div class="modal" id="m-up" role="dialog" aria-modal="true" aria-labelledby="up-t" hidden>
   <div class="sheet">
     <h2 id="up-t">Por mais R$ 10, leve o Completo</h2>
@@ -281,12 +315,10 @@ a { color: var(--brand); text-underline-offset: 3px; }
     <button class="cta cta--ghost" data-buy="basico-direto" type="button">Continuar com o Básico · R$ 19,90</button>
   </div>
 </div>
-
-<!-- Pop-up de 30 segundos -->
 <div class="modal modal--soft" id="m-30" role="dialog" aria-labelledby="t30-t" hidden>
-  <div class="sheet sheet--bottom">
+  <div class="sheet">
     <h3 id="t30-t">Veja um dia completo do cardápio</h3>
-    <p style="color:var(--muted)">Antes de decidir, confira como é um dia do cardápio, com porções, lista de compras e custo.</p>
+    <p style="color:var(--mute)">Antes de decidir, confira como é um dia do cardápio, com porções, lista de compras e custo.</p>
     <button class="cta" data-buy="completo" type="button">QUERO O CARDÁPIO COMPLETO</button>
     <button class="xbtn" id="close30" type="button">Agora não</button>
   </div>
@@ -294,9 +326,7 @@ a { color: var(--brand); text-underline-offset: 3px; }
 
 <script>
 (function () {
-  /* Troque pelos links reais de checkout da Kiwify. */
   var LINKS = { basico: 'https://pay.kiwify.com.br/ufuh3oN', completo: 'https://pay.kiwify.com.br/SHDXLFL' };
-
   var up = document.getElementById('m-up');
   var m30 = document.getElementById('m-30');
   function seen(k) { try { return window.sessionStorage.getItem(k) === '1'; } catch (e) { return false; } }
@@ -305,14 +335,12 @@ a { color: var(--brand); text-underline-offset: 3px; }
   function close(el) { el.classList.remove('open'); el.hidden = true; }
   function go(plan) {
     var url = LINKS[plan];
-    /* Repassa UTMs da URL da página para o checkout (Utmify/Meta) */
     try {
       var q = window.location.search;
       if (q) url += (url.indexOf('?') > -1 ? '&' : '?') + q.replace(/^\?/, '');
     } catch (e) {}
     window.location.href = url;
   }
-
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest('[data-buy]');
     if (!b) return;
@@ -326,25 +354,19 @@ a { color: var(--brand); text-underline-offset: 3px; }
   up.addEventListener('click', function (ev) { if (ev.target === up) close(up); });
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { close(up); close(m30); } });
   document.getElementById('close30').addEventListener('click', function () { close(m30); });
-
-  /* Pop-up de 30 segundos: uma vez por visita, só se nada foi clicado */
   setTimeout(function () {
     if (!seen('t30') && !seen('up') && !up.classList.contains('open')) { mark('t30'); open(m30); }
   }, 30000);
-
-  /* Contador do carrossel */
   var rail = document.getElementById('rail');
   var cnt = document.getElementById('railcount');
   var total = rail.children.length;
   rail.addEventListener('scroll', function () {
-    var w = rail.children[0].getBoundingClientRect().width + 12;
+    var w = rail.children[0].getBoundingClientRect().width + 14;
     var i = Math.min(total, Math.round(rail.scrollLeft / w) + 1);
     if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4) i = total;
     cnt.textContent = i + ' de ' + total + (i < total ? ' · arraste para o lado →' : '');
   }, { passive: true });
 })();
 </script>
-
-
 </body>
 </html>
