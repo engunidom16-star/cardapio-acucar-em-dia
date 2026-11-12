@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}</style>
+<title>Cardápio do Açúcar em Dia — Vendas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #F6F8F2;
+  --surface: #FFFFFF;
+  --surface-2: #E9EFE4;
+  --fg: #14261C;
+  --muted: #4F6558;
+  --line: #CFDACB;
+  --brand: #1F6B45;
+  --brand-fg: #FFFFFF;
+  --cta: #C84A2F;
+  --cta-fg: #FFFFFF;
+  --veg: #2E8450;
+  --veg-soft: #DCEFE2;
+  --pro: #C84A2F;
+  --pro-soft: #F9E1DA;
+  --carb: #D9A21B;
+  --carb-soft: #F7EAC4;
+  --note-bg: #FFF0BF;
+  --note-fg: #4D3A00;
+  --scrim: rgba(10, 20, 14, 0.55);
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1913; --surface: #15241B; --surface-2: #1C2F24; --fg: #E6EFE8; --muted: #A2B7AA; --line: #2B4333;
+    --brand: #5CC38A; --brand-fg: #0B1A12; --cta: #F08A6E; --cta-fg: #2A0F07;
+    --veg: #5CC38A; --veg-soft: #1B3A27; --pro: #F08A6E; --pro-soft: #3F2219; --carb: #EBBC47; --carb-soft: #3A2F10;
+    --note-bg: #3A2F10; --note-fg: #F3D98A; --scrim: rgba(0, 0, 0, 0.65);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1913; --surface: #15241B; --surface-2: #1C2F24; --fg: #E6EFE8; --muted: #A2B7AA; --line: #2B4333;
+  --brand: #5CC38A; --brand-fg: #0B1A12; --cta: #F08A6E; --cta-fg: #2A0F07;
+  --veg: #5CC38A; --veg-soft: #1B3A27; --pro: #F08A6E; --pro-soft: #3F2219; --carb: #EBBC47; --carb-soft: #3A2F10;
+  --note-bg: #3A2F10; --note-fg: #F3D98A; --scrim: rgba(0, 0, 0, 0.65);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.2rem, 9vw, 3.4rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--brand); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--carb); outline-offset: 2px; }
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 44px; }
+.band + .band { border-top: 1px solid var(--line); }
+.band--alt { background: var(--surface); }
+.stack > * + * { margin-top: 16px; }
+.kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 54ch; }
+.cta { display: block; width: 100%; text-align: center; padding: 18px 20px; border-radius: 12px; background: var(--cta); color: var(--cta-fg); border: 0; font: 800 1.05rem var(--font-body); letter-spacing: 0.02em; cursor: pointer; text-decoration: none; }
+.cta--brand { background: var(--brand); color: var(--brand-fg); }
+.cta--ghost { background: transparent; color: var(--fg); border: 1.5px solid var(--line); font-weight: 700; padding: 14px 16px; }
+.assure { margin-top: 10px; font-size: 13.5px; color: var(--muted); text-align: center; }
+.block-cta { margin-top: 26px; }
+
+/* Topo */
+.topo { background: var(--surface); }
+.plate-ill { display: block; width: min(100%, 250px); margin: 8px auto 0; height: auto; }
+.plate-ill .a { fill: var(--veg); } .plate-ill .b { fill: var(--pro); } .plate-ill .c { fill: var(--carb); }
+.plate-ill .rim { fill: none; stroke: var(--surface); stroke-width: 3; }
+.plate-ill text { font-family: var(--font-display); font-weight: 800; font-size: 26px; fill: #fff; }
+.plate-ill .dk { fill: #2B2000; }
+
+/* Carrossel */
+.rail { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 8px; margin-top: 22px; scrollbar-width: none; overscroll-behavior-x: contain; }
+.rail::-webkit-scrollbar { display: none; }
+.card { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 10px; align-content: start; min-height: 190px; }
+.band--alt .card { background: var(--bg); }
+.card .tagline { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand); }
+.card .tagline.bonus { color: var(--cta); }
+.card p { color: var(--muted); font-size: 15px; }
+.count { margin-top: 6px; font-size: 13px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+
+/* Pesquisa */
+.steps { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.steps .n { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: var(--brand-fg); font-family: var(--font-display); font-weight: 800; }
+.steps b { display: block; }
+.steps span.src { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
+.small { font-size: 14px; color: var(--muted); margin-top: 18px; }
+.list { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.list li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; }
+.list li::before { content: "✓"; font-weight: 800; color: var(--brand); }
+.list.no li::before { content: "×"; color: var(--cta); font-size: 1.2rem; line-height: 1.2; }
+
+/* Preços */
+.prices { display: grid; gap: 14px; margin-top: 24px; }
+.plan { background: var(--bg); border: 1.5px solid var(--line); border-radius: 16px; padding: 20px; display: grid; gap: 12px; }
+.plan--star { border-color: var(--brand); border-width: 2.5px; }
+.plan .badge { justify-self: start; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--brand); color: var(--brand-fg); padding: 4px 10px; border-radius: 999px; }
+.plan .price { font-family: var(--font-display); font-weight: 800; font-size: 2.3rem; line-height: 1; }
+.plan .price small { font-size: 0.9rem; font-weight: 600; color: var(--muted); font-family: var(--font-body); }
+.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
+.plan li::before { content: "✓ "; color: var(--brand); font-weight: 800; }
+.guarantee { margin-top: 20px; padding: 16px 18px; border-radius: 14px; background: var(--veg-soft); border: 1.5px solid var(--veg); font-weight: 600; }
+
+/* FAQ */
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; padding: 16px 28px 16px 0; font-weight: 700; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 1.5rem; color: var(--muted); }
+.faq details[open] summary::after { content: "–"; }
+.faq p { padding: 0 0 16px; color: var(--muted); max-width: 58ch; }
+.foot { font-size: 13.5px; color: var(--muted); display: grid; gap: 10px; }
+.sources { font-size: 14px; margin: 14px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+
+/* Pop-ups */
+.modal { position: fixed; inset: 0; z-index: 30; display: none; align-items: flex-end; justify-content: center; background: var(--scrim); }
+.modal.open { display: flex; }
+.sheet { width: 100%; max-width: 520px; background: var(--surface); border-radius: 20px 20px 0 0; padding: 24px max(16px, env(safe-area-inset-right, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 12px; max-height: 92vh; overflow: auto; }
+.sheet .price-line { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; }
+.sheet .extras { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0; padding: 0; list-style: none; }
+.sheet .extras li { padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; background: var(--carb-soft); border: 1.5px solid var(--carb); }
+.sheet--bottom { border-radius: 20px 20px 0 0; }
+.modal--soft { background: transparent; pointer-events: none; }
+.modal--soft .sheet { pointer-events: auto; box-shadow: 0 -6px 30px rgba(0,0,0,0.25); border-top: 1px solid var(--line); }
+.xbtn { justify-self: end; background: transparent; border: 0; color: var(--muted); font: 600 14px var(--font-body); padding: 6px 4px; cursor: pointer; }
+@media (min-width: 640px) { .wrap { padding-block: 64px; } .modal { align-items: center; } .sheet { border-radius: 20px; } .card { flex-basis: 300px; } }
+@media (prefers-reduced-motion: no-preference) { .sheet { animation: up 0.22s ease-out; } @keyframes up { from { transform: translateY(24px); opacity: 0; } } }
+</style>
+
+</head>
+<body>
+<main>
+<section class="topo">
+  <div class="wrap stack">
+    <p class="kicker">Cardápio do Açúcar em Dia</p>
+    <h1>Cardápio de 14 dias para cuidar do açúcar na alimentação</h1>
+    <p class="lead">Todas as refeições das próximas duas semanas planejadas, com lista de compras e custo por dia. Para quem quer comer com menos açúcar sem passar o dia pensando no que cozinhar.</p>
+    <svg class="plate-ill" viewBox="0 0 160 160" role="img" aria-label="Prato: metade vegetais, um quarto proteína, um quarto carboidrato">
+      <path class="a" d="M80 6 A74 74 0 0 0 80 154 Z"/>
+      <path class="b" d="M80 80 L80 6 A74 74 0 0 1 154 80 Z"/>
+      <path class="c" d="M80 80 L154 80 A74 74 0 0 1 80 154 Z"/>
+      <circle class="rim" cx="80" cy="80" r="74"/>
+      <text x="40" y="90" text-anchor="middle">½</text>
+      <text x="118" y="56" text-anchor="middle">¼</text>
+      <text class="dk" x="118" y="118" text-anchor="middle">¼</text>
+    </svg>
+    <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button>
+    <p class="assure">Acesso imediato por e-mail · Garantia de 7 dias · Pagamento no Pix ou cartão</p></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap stack">
+    <p class="kicker">O problema</p>
+    <h2>Todo dia a mesma pergunta: o que eu posso comer hoje?</h2>
+    <p>Quando é preciso cuidar do açúcar, planejar as refeições vira uma tarefa a mais. Você procura receita, compara rótulo, refaz a lista de compras e, no fim da semana, repete o que já conhece porque é mais seguro.</p>
+    <p><b>O cardápio resolve a parte prática:</b> o que cozinhar a cada dia, o que comprar e quanto vai custar.</p>
+    <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button></div>
+  </div>
+</section>
+
+<section class="band band--alt">
+  <div class="wrap">
+    <p class="kicker">O que vem no kit</p>
+    <h2>Tudo o que vem no kit</h2>
+    <div class="rail" id="rail" tabindex="0" aria-label="Itens do kit, arraste para o lado">
+      <article class="card"><span class="tagline">Principal</span><h3>Cardápio de 14 dias</h3><p>Café, almoço, lanche e jantar de cada dia, com porções e modo de preparo.</p></article>
+      <article class="card"><span class="tagline">Principal</span><h3>Lista de compras por semana</h3><p>Tudo o que comprar, agrupado por seção do mercado.</p></article>
+      <article class="card"><span class="tagline">Principal</span><h3>Custo por dia</h3><p>Quanto cada dia de cardápio custa, para você planejar o orçamento.</p></article>
+      <article class="card"><span class="tagline bonus">Bônus 1 · incluso no Completo</span><h3>Cardápio de 30 dias</h3><p>Mais duas semanas de refeições para variar o mês inteiro.</p></article>
+      <article class="card"><span class="tagline bonus">Bônus 2 · incluso no Completo</span><h3>Guia de substituições</h3><p>Trocas simples de ingredientes quando falta algo em casa.</p></article>
+      <article class="card"><span class="tagline bonus">Bônus 3 · incluso no Completo</span><h3>Versão para imprimir</h3><p>O kit em PDF organizado para deixar na geladeira.</p></article>
+    </div>
+    <p class="count" id="railcount" aria-live="polite">1 de 6 · arraste para o lado →</p>
+    <div class="block-cta"><button class="cta" data-buy="completo" type="button">QUERO TUDO POR R$ 29,90</button></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Base de pesquisa</p>
+    <h2>Feito com base em pesquisas de vários países</h2>
+    <p class="lead" style="margin-top:12px">O cardápio combina cinco ideias descritas em diretrizes e estudos publicados, com as fontes à vista.</p>
+    <ol class="steps">
+      <li><span class="n">1</span><span><b>O método do prato</b>Metade do prato com vegetais sem amido, um quarto com proteína e um quarto com carboidratos.<span class="src">Associação Americana de Diabetes (EUA)</span></span></li>
+      <li><span class="n">2</span><span><b>A ordem em que se come</b>Em estudos, comer vegetais e proteína antes do carboidrato reduziu o pico de glicose depois da refeição.<span class="src">Estudos do Japão e dos EUA</span></span></li>
+      <li><span class="n">3</span><span><b>A troca de carboidratos</b>Diretrizes recomendam trocar carboidratos de índice glicêmico alto por outros de índice menor em refeições mistas.<span class="src">Diabetes Canadá e Reino Unido</span></span></li>
+      <li><span class="n">4</span><span><b>Comida de verdade</b>Preferir alimentos in natura ou minimamente processados aos ultraprocessados.<span class="src">Guia Alimentar para a População Brasileira</span></span></li>
+      <li><span class="n">5</span><span><b>Caminhada curta depois de comer</b>Revisões encontraram que caminhar de 2 a 5 minutos depois das refeições ajudou glicose e insulina.<span class="src">Revisões na revista Sports Medicine</span></span></li>
+    </ol>
+    <p class="small">Estas são referências de estudo, não promessa de resultado. Este material não tem vínculo com essas instituições, que não o endossam, e não substitui acompanhamento médico ou nutricional.</p>
+    <div class="block-cta"><button class="cta" data-buy="basico" type="button">QUERO O CARDÁPIO</button></div>
+  </div>
+</section>
+
+<section class="band band--alt">
+  <div class="wrap">
+    <h2>Para quem é</h2>
+    <ul class="list">
+      <li>Para quem quer organizar as refeições da semana e reduzir o açúcar do dia a dia.</li>
+      <li>Para quem cuida da alimentação de alguém da família.</li>
+      <li>Para quem está começando e não sabe o que cozinhar.</li>
+    </ul>
+    <h2 style="margin-top:32px">Para quem não é</h2>
+    <ul class="list no">
+      <li>Não é tratamento e não substitui acompanhamento médico ou nutricional.</li>
+      <li>Não é uma dieta pronta para quem usa insulina ou medicação: nesse caso, a orientação do seu médico ou nutricionista vem primeiro.</li>
+    </ul>
+    <!-- Bloco "Quem revisou" só entra depois que o revisor confirmar nome e registro. -->
+    <!-- Bloco "Depoimentos" só entra com clientes reais e autorização. -->
+  </div>
+</section>
+
+<section class="band" id="oferta">
+  <div class="wrap">
+    <p class="kicker">Escolha o seu</p>
+    <h2>Dois jeitos de começar</h2>
+    <div class="prices">
+      <div class="plan">
+        <h3>Básico</h3>
+        <div class="price">R$ 19,90</div>
+        <ul><li>Cardápio de 14 dias</li><li>Lista de compras por semana</li><li>Custo por dia</li></ul>
+        <button class="cta cta--brand" data-buy="basico" type="button">QUERO O CARDÁPIO</button>
+      </div>
+      <div class="plan plan--star">
+        <span class="badge">Mais escolhido</span>
+        <h3>Completo</h3>
+        <div class="price">R$ 29,90</div>
+        <ul><li>Tudo do Básico</li><li>Cardápio de 30 dias</li><li>Guia de substituições</li><li>Versão para imprimir</li></ul>
+        <button class="cta" data-buy="completo" type="button">QUERO TUDO POR R$ 29,90</button>
+      </div>
+    </div>
+    <p class="guarantee">Risco zero: se não gostar, devolvemos 100% do seu dinheiro em até 7 dias. Sem perguntas.</p>
+    <p class="assure">Acesso imediato por e-mail · Pagamento no Pix ou cartão</p>
+  </div>
+</section>
+
+<section class="band band--alt faq">
+  <div class="wrap">
+    <h2 style="margin-bottom:20px">Perguntas frequentes</h2>
+    <details><summary>Serve para quem tem diabetes?</summary><p>O cardápio foi pensado para reduzir o açúcar na alimentação. Se você tem diabetes ou usa medicação, siga a orientação do seu médico ou nutricionista. Este material não substitui o acompanhamento.</p></details>
+    <details><summary>Preciso de ingredientes difíceis?</summary><p>Não. A lista de compras usa itens de mercado comum.</p></details>
+    <details><summary>Como recebo?</summary><p>Depois do pagamento, o acesso chega por e-mail na hora. Dá para abrir no celular ou imprimir.</p></details>
+    <details><summary>Por quanto tempo tenho acesso?</summary><p>Acesso vitalício ao material que você comprou.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Basta pedir o reembolso dentro do prazo.</p></details>
+  </div>
+</section>
+
+<footer class="band">
+  <div class="wrap foot">
+    <p>Este material tem caráter informativo e não substitui consulta, diagnóstico ou tratamento médico ou nutricional. Pessoas com doenças, gestantes e crianças devem procurar um profissional antes de mudar a alimentação.</p>
+    <p><b>Fontes</b></p>
+    <ol class="sources">
+      <li><a href="https://diabetes.org/food-and-fitness/food/planning-meals/create-your-plate/" target="_blank" rel="noopener">Método do prato — Associação Americana de Diabetes</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/30101510/" target="_blank" rel="noopener">Ordem das refeições — estudo em pré-diabetes</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8883221" target="_blank" rel="noopener">revisão sistemática</a></li>
+      <li><a href="https://www.diabetes.ca/understanding-the-glycemic-index-gi" target="_blank" rel="noopener">Índice glicêmico — Diabetes Canadá</a> · <a href="https://guidelines.diabetes.ca/cpg/Chapter11" target="_blank" rel="noopener">diretriz</a></li>
+      <li><a href="https://guiaalimentar.org.br" target="_blank" rel="noopener">Guia Alimentar para a População Brasileira</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/36715875/" target="_blank" rel="noopener">Caminhada depois de comer — Sports Medicine</a></li>
+    </ol>
+  </div>
+</footer>
+</main>
+
+<!-- Pop-up de upgrade -->
+<div class="modal" id="m-up" role="dialog" aria-modal="true" aria-labelledby="up-t" hidden>
+  <div class="sheet">
+    <h2 id="up-t">Por mais R$ 10, leve o Completo</h2>
+    <p>Você escolheu o Básico (R$ 19,90). Pelo Completo (R$ 29,90) você leva também o cardápio de 30 dias, o guia de substituições e a versão para imprimir.</p>
+    <ul class="extras"><li>Cardápio de 30 dias</li><li>Guia de substituições</li><li>Versão para imprimir</li></ul>
+    <button class="cta" data-buy="completo" type="button">QUERO O COMPLETO · R$ 29,90</button>
+    <button class="cta cta--ghost" data-buy="basico-direto" type="button">Continuar com o Básico · R$ 19,90</button>
+  </div>
+</div>
+
+<!-- Pop-up de 30 segundos -->
+<div class="modal modal--soft" id="m-30" role="dialog" aria-labelledby="t30-t" hidden>
+  <div class="sheet sheet--bottom">
+    <h3 id="t30-t">Veja um dia completo do cardápio</h3>
+    <p style="color:var(--muted)">Antes de decidir, confira como é um dia do cardápio, com porções, lista de compras e custo.</p>
+    <button class="cta" data-buy="completo" type="button">QUERO O CARDÁPIO COMPLETO</button>
+    <button class="xbtn" id="close30" type="button">Agora não</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* Troque pelos links reais de checkout da Kiwify. */
+  var LINKS = { basico: 'https://pay.kiwify.com.br/ufuh3oN', completo: 'https://pay.kiwify.com.br/SHDXLFL' };
+
+  var up = document.getElementById('m-up');
+  var m30 = document.getElementById('m-30');
+  function seen(k) { try { return window.sessionStorage.getItem(k) === '1'; } catch (e) { return false; } }
+  function mark(k) { try { window.sessionStorage.setItem(k, '1'); } catch (e) {} }
+  function open(el) { el.hidden = false; el.classList.add('open'); }
+  function close(el) { el.classList.remove('open'); el.hidden = true; }
+  function go(plan) {
+    var url = LINKS[plan];
+    /* Repassa UTMs da URL da página para o checkout (Utmify/Meta) */
+    try {
+      var q = window.location.search;
+      if (q) url += (url.indexOf('?') > -1 ? '&' : '?') + q.replace(/^\?/, '');
+    } catch (e) {}
+    window.location.href = url;
+  }
+
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-buy]');
+    if (!b) return;
+    var what = b.getAttribute('data-buy');
+    if (what === 'basico') {
+      if (!seen('up')) { mark('up'); close(m30); open(up); return; }
+      go('basico');
+    } else if (what === 'basico-direto') { go('basico'); }
+    else { go('completo'); }
+  });
+  up.addEventListener('click', function (ev) { if (ev.target === up) close(up); });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { close(up); close(m30); } });
+  document.getElementById('close30').addEventListener('click', function () { close(m30); });
+
+  /* Pop-up de 30 segundos: uma vez por visita, só se nada foi clicado */
+  setTimeout(function () {
+    if (!seen('t30') && !seen('up') && !up.classList.contains('open')) { mark('t30'); open(m30); }
+  }, 30000);
+
+  /* Contador do carrossel */
+  var rail = document.getElementById('rail');
+  var cnt = document.getElementById('railcount');
+  var total = rail.children.length;
+  rail.addEventListener('scroll', function () {
+    var w = rail.children[0].getBoundingClientRect().width + 12;
+    var i = Math.min(total, Math.round(rail.scrollLeft / w) + 1);
+    if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4) i = total;
+    cnt.textContent = i + ' de ' + total + (i < total ? ' · arraste para o lado →' : '');
+  }, { passive: true });
+})();
+</script>
+
+
+</body>
+</html>
